@@ -8,7 +8,7 @@ This course comes with some [slides](https://static.frontendmasters.com/resource
 * Node version >= 6
 
 ## Solutions
-The solution branch has the completed course fo reference. There is no one way to finish this course.
+The solution branch has the completed course for reference. There is no one way to finish this course.
 ## The Solutions
 
 The solution branch has the completed course for reference. There is no one way to finish this course.
