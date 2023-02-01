@@ -39,7 +39,7 @@ export default function Pets() {
   return (
     <div className="page pets-page">
       <section>
-        <div className="row betwee-xs middle-xs">
+        <div className="row between-xs middle-xs">
           <div className="col-xs-10">
             <h1>Pets</h1>
           </div>
