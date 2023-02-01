@@ -18,7 +18,7 @@ const GET_PETS = gql`
 
 const CREATE_A_PET = gql`
   mutation CreateAPet($newPet: NewPetInput!) {
-    addPet(inputData: $newPet) {
+    addPet(input: $newPet) {
       id
       name
       type
@@ -38,7 +38,7 @@ export default function Pets() {
   const onSubmit = (input) => {
     setModal(false);
     createPet({
-      variables: { inputData: { name: input.name, type: input.type } },
+      variables: { newPet: input },
     });
   };
 
