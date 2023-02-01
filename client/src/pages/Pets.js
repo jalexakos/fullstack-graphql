@@ -34,11 +34,11 @@ export default function Pets() {
     createPet,
     { data: mutationData, loading: mutationLoading, error: mutationError },
   ] = useMutation(CREATE_A_PET, {
-    update(cache, { data: { createPet } }) {
+    update(cache, { data: { addPet } }) {
       const { pets } = cache.readQuery({ query: GET_PETS });
       cache.writeQuery({
         query: GET_PETS,
-        data: { pets: pets.concat([createPet]) },
+        data: { pets: pets.concat([addPet]) },
       });
     },
   });
