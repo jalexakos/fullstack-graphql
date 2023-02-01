@@ -18,7 +18,7 @@ const GET_PETS = gql`
 
 const CREATE_A_PET = gql`
   mutation CreateAPet($newPet: NewPetInput!) {
-    addPet(input: $newPet) {
+    addPet(inputData: $newPet) {
       id
       name
       type
@@ -37,18 +37,21 @@ export default function Pets() {
 
   const onSubmit = (input) => {
     setModal(false);
+    createPet({
+      variables: { inputData: { name: input.name, type: input.type } },
+    });
   };
 
   if (modal) {
     return <NewPetModal onSubmit={onSubmit} onCancel={() => setModal(false)} />;
   }
 
-  if (loading) {
+  if (loading || mutationLoading) {
     return <Loader />;
   }
 
-  if (error) {
-    return <p>Error - {error.message}</p>;
+  if (error || mutationError) {
+    return <p>Error</p>;
   }
 
   return (
