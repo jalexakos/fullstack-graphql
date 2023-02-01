@@ -5,11 +5,12 @@ import PetsList from "../components/PetsList";
 import NewPetModal from "../components/NewPetModal";
 import Loader from "../components/Loader";
 
-const query = gql`
+const GET_PETS = gql`
   query GetPets {
     pets {
       id
       name
+      type
       img
     }
   }
@@ -17,7 +18,7 @@ const query = gql`
 
 export default function Pets() {
   const [modal, setModal] = useState(false);
-  const { data, loading, error } = useQuery(query);
+  const { data, loading, error } = useQuery(GET_PETS);
 
   const onSubmit = (input) => {
     setModal(false);
@@ -25,6 +26,14 @@ export default function Pets() {
 
   if (modal) {
     return <NewPetModal onSubmit={onSubmit} onCancel={() => setModal(false)} />;
+  }
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <p>Error - {error.message}</p>;
   }
 
   return (
@@ -41,7 +50,7 @@ export default function Pets() {
         </div>
       </section>
       <section>
-        <PetsList pets={data} />
+        <PetsList pets={data.pets} />
       </section>
     </div>
   );
