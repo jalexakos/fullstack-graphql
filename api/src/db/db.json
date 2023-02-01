@@ -10,6 +10,13 @@
       "name": "batman",
       "type": "DOG",
       "user": "jBWMVGjm50l6LGwepDoty"
+    },
+    {
+      "id": "BXOOR0AooLx3PRkLirywm",
+      "createdAt": 1675214457185,
+      "name": "Snoop",
+      "type": "DOG",
+      "user": "jBWMVGjm50l6LGwepDoty"
     }
   ]
 }
