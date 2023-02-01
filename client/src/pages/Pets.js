@@ -33,7 +33,15 @@ export default function Pets() {
   const [
     createPet,
     { data: mutationData, loading: mutationLoading, error: mutationError },
-  ] = useMutation(CREATE_A_PET);
+  ] = useMutation(CREATE_A_PET, {
+    update(cache, { data: { addPet } }) {
+      const { pets } = cache.readQuery({ query: GET_PETS });
+      cache.writeQuery({
+        query: GET_PETS,
+        data: { pets: pets.concat([addPet]) },
+      });
+    },
+  });
 
   const onSubmit = (input) => {
     setModal(false);
